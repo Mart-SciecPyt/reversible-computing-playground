@@ -1,0 +1,7 @@
+# Optional quantum utilities are available from:
+# revcomp.quantum
+#
+# Example:
+# from revcomp.quantum import build_quantum_toffoli_circuit
+#
+# Qiskit is intentionally optional so the base package remains lightweight.
