@@ -1,86 +1,72 @@
 # Reversible Computing Playground
 
-A small educational Python project for the **Physics of Computing** course.
+A Python-based educational toolkit for exploring the physical limits of computation through reversible logic, Landauer's principle, and runtime computational profiling.
 
-The project compares ordinary irreversible logic gates with reversible gates and connects this to the physical cost of information erasure through **Landauer's principle**.
+This project connects three ideas:
 
-## Main idea
+1. classical computation,
+2. information loss,
+3. thermodynamic energy limits.
 
-Classical logic gates such as `AND` and `OR` lose information because several different inputs can produce the same output. According to Landauer's principle, irreversible information erasure has a minimum thermodynamic energy cost:
+It was developed as a Physics of Computing project, but it is structured as a reusable Python package.
 
-```math
-E_{min} = k_B T \ln 2
-```
+---
 
-Reversible gates such as `NOT`, `CNOT`, `Toffoli`, and `Fredkin` preserve enough information to reconstruct the input from the output. This makes reversible computing an important bridge between classical thermodynamics of computation and quantum computing, where ideal quantum gates are unitary and therefore reversible.
+## Why this project matters
 
-## Features
+Modern computation is not only a mathematical process. It is also a physical process.
 
-- Classical gates: `NOT`, `AND`, `OR`, `XOR`
-- Reversible gates: `CNOT`, `Toffoli`, `Fredkin`
+Whenever information is irreversibly erased, a minimum amount of energy must be dissipated as heat. This lower bound is described by Landauer's principle:
+
+E_min = k_B * T * ln(2)
+
+This project demonstrates that idea using Python.
+
+---
+
+## Main features
+
+- Classical logic gates: AND, OR, XOR, NOT
+- Reversible logic gate: Toffoli gate
+- Automatic reversibility checking
 - Truth table generation
-- Automatic reversibility check
-- Simple lost-information estimate
-- Landauer limit calculation
-- Temperature vs energy plot
-- Demo script and basic tests
+- Landauer energy calculations
+- Energy vs temperature visualization
+- Runtime computational profiler
+- Simple examples and tests
+- Markdown report for academic submission
 
-## Project structure
+---
 
-```text
-reversible-computing-playground/
-├── src/revcomp/
-│   ├── gates.py
-│   ├── landauer.py
-│   ├── plots.py
-│   └── simulation.py
-├── examples/
-│   └── demo.py
-├── docs/
-│   └── theory.md
-├── tests/
-│   └── test_gates.py
-├── figures/
-├── README.md
-├── report.md
-├── requirements.txt
-└── pyproject.toml
-```
+## Runtime profiler
+
+Example:
+
+from revcomp import ComputationalProfiler, format_runtime_profile
+
+with ComputationalProfiler("example computation") as profiler:
+    result = sum(i * i for i in range(100_000))
+
+print(format_runtime_profile(profiler.result))
+
+---
 
 ## Installation
 
-```bash
-git clone https://github.com/YOUR_USERNAME/reversible-computing-playground.git
+git clone https://github.com/Mart-SciecPyt/reversible-computing-playground.git
 cd reversible-computing-playground
+
 pip install -r requirements.txt
-```
 
-## Run the demo
+---
 
-```bash
+## Usage
+
 python examples/demo.py
-```
+python examples/runtime_usage.py
 
-The demo prints a comparison of reversible and irreversible gates and saves a figure to:
+---
 
-```text
-figures/landauer_curve.png
-```
+## Author
 
-## Run tests
-
-```bash
-pytest
-```
-
-## Possible extensions
-
-- Add more reversible gates
-- Build a reversible full adder
-- Add Qiskit implementation of the Toffoli gate
-- Compare classical reversible gates with quantum unitary gates
-- Create a Streamlit web demo
-
-## Course relevance
-
-This project demonstrates a core idea of the physics of computation: information processing is not only mathematical, but physical. If a computational operation erases information, thermodynamics imposes a minimum energy cost.
+Martin Trancsik
